@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UniHospital Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        .background-image {
+            background-image: url('https://storage.googleapis.com/a1aa/image/PXXjeYFZcJU6cqjEnEhEgbq3oohZQsdJ0DoeKe0CJIfc3EsOB.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Handle Sign In button
+            document.querySelector('#Login button[type="button"]').addEventListener('click', function () {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username && password) {
+                    // Redirect to main1.html after successful login
+                    window.location.href = 'main1.html'; // Change this line to point to the main page
+                } else {
+                    alert('Please fill in all fields!');
+                }
+            });
+
+            // Handle Registration button
+            document.querySelector('#Register button[type="button"]').addEventListener('click', function () {
+                const newUsername = document.getElementById('new-username').value;
+                const newEmail = document.getElementById('new-email').value;
+                const newPassword = document.getElementById('new-password').value;
+
+                if (newUsername && newEmail && newPassword) {
+                    alert('Registration successful! You can now log in.');
+                    document.getElementById('new-username').value = '';
+                    document.getElementById('new-email').value = '';
+                    document.getElementById('new-password').value = '';
+                } else {
+                    alert('Please fill in all fields!');
+                }
+            });
+        });
+    </script>
+</head>
+<body class="bg-pink-100">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto flex items-center justify-between py-4 px-6">
+            <div class="flex items-center">
+                <img alt="Hospital Sign Logo" class="h-10 w-10" src="https://storage.googleapis.com/a1aa/image/dztz3w1MyDo7P9r1f5n1TlFTBXt2znSOlob7fOGA2D6MPBrTA.jpg" />
+                <h1 class="text-2xl font-bold ml-4">UniHospital Management System</h1>
+            </div>
+            <nav class="space-x-6">
+                <a class="text-gray-700 hover:text-gray-900" href="#">Home</a>
+                <a class="text-gray-700 hover:text-gray-900" href="#">Appointments</a>
+                <a class="text-gray-700 hover:text-gray-900" href="#">Contact</a>
+                <a class="text-gray-700 hover:text-gray-900" href="#">Order Medicines</a>
+                <a class="text-gray-700 hover:text-gray-900" href="#">Payments</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto mt-6">
+        <div class="text-center py-6 bg-pink-200 rounded-lg shadow-md">
+            <h2 class="text-4xl font-bold text-white">Welcome to UniHospital</h2>
+        </div>
+        <div class="background-image mt-6 rounded-lg shadow-md flex items-center justify-center">
+            <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
+                <div class="flex justify-center mb-4">
+                    <button class="tablinks bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-l" onclick="openTab(event, 'Login')">Login</button>
+                    <button class="tablinks bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-r" onclick="openTab(event, 'Register')">Register</button>
+                </div>
+                <div id="Login" class="tab-content active">
+                    <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
+                    <form>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username"/>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************"/>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button">Sign In</button>
+                            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">Forgot Password?</a>
+                        </div>
+                    </form>
+                </div>
+                <div id="Register" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4 text-center">Register</h2>
+                    <form>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="new-username">Username</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="new-username" type="text" placeholder="Username"/>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="new-email">Email</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="new-email" type="email" placeholder="Email"/>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="new-password">Password</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="new-password" type="password" placeholder="******************"/>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="button">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
